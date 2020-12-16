@@ -8,7 +8,7 @@ import axios from 'axios';
     class Categories extends React.Component {
       constructor(props) {
         super(props);
-        this.state = {};   //hmm?
+        this.state = {fact: 'Chuck Norris can text using his walkie talkie and without batteries.' };   //hmm?
 
         this.getFact = this.getFact.bind(this);
       }
@@ -20,6 +20,7 @@ import axios from 'axios';
           //rendering the jokes value as the event occurs
           const jokesZone = document.getElementById("jokes-zone");
           jokesZone.innerHTML = this.setState({fact: response.data.value});
+          console.log(response);
         }).catch(error => {
           console.log(error);
         });
