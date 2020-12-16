@@ -1,0 +1,8 @@
+#image-zone{
+    height: 100%;
+}
+img{
+    border-radius: 50%;
+    display: flex;
+    margin-left: 40%;
+}
