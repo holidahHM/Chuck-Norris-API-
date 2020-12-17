@@ -1,9 +1,10 @@
-#image-zone{
-    height: 100%;
-}
 img{
     border-radius: 50%;
     display: flex;
     margin-left: 40%;
 }
-
+#jokes-zone{
+    background-color: orange;
+    float: left;
+    margin-left: 30%;
+}
