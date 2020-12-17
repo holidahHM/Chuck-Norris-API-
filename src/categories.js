@@ -8,25 +8,38 @@ import axios from 'axios';
     class Categories extends React.Component {
       constructor(props) {
         super(props);  //to ensure validity of any implementation of the this.props
-        this.state = {fact: 'Joke zone', value: 'money'};
+        this.state = {fact: 'Joke zone', value: ''};
         this.categoryValue = this.categoryValue.bind(this);
         this.getFact = this.getFact.bind(this); //binding the getFact method for the Categories component
       };
     
-      categoryValue(e){
+      categoryValue(event){
         //const buttonElement = document.querySelectorAll("Button");
         //this.setState({value: {buttonElement[0].getAttribute("value")}})
         //event target -> (e)=> {return e.target.attributes.data.value;}
           //JSON.stringify(document.getElementsByTagName("Button").getAttribute("value"))});
           //this.categoryValue(e, "value");
         //console.log(e.target.value);
-        this.setState({value: e.target.value})
+        //this.setState({value: event.target.getAttribute(this.state.value)});
+        //let attributeValue = event.currentTarget.attributes.getNamedItem('data-tag').value;
+        let attributeValue = event.target.value;
+        console.log(attributeValue);
+        this.setState({
+          value: attributeValue
+        });
+
+       /* userClick(event){
+          let tag = event.currentTarget.dataset.tag;
+          console.log(tag); // should return Tagvalue
+         }
+         // when render element
+         <a data-tag="TagValue" onClick={this.userClick}>Click me</a>*/
       }
 
       getFact() {
           //getting the node value for the Button component
         const jokesZone = document.getElementById("jokes-zone");
-        const url_to_fetch = 'https://api.chucknorris.io/jokes/random?category=' + this.categoryValue(this.state.value);
+        const url_to_fetch = 'https://api.chucknorris.io/jokes/random?category=' + {categoryValue()};
         console.log(this.categoryValue());
         console.log(url_to_fetch);
 
@@ -43,7 +56,7 @@ import axios from 'axios';
     render(){
         return (
         <div className="mb-2">
-            <Button variant="dark" size="lg" value="animal" onClick={this.getFact}>
+            <Button variant="dark" size="lg" data-tag="animal" onClick={this.getFact}>
              animal
             </Button>{' '}
             <Button variant="dark" size="lg" value="career" onClick={() => this.getFact()}>
